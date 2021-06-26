@@ -20,4 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main_app.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('vacations/create/', views.VacationCreate.as_view(), name='vacations_create'), 
+    path('vacations/<int:pk>/update/', views.VacationUpdate.as_view(), name='vacations_update')
 ]
+
