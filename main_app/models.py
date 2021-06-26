@@ -1,4 +1,40 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
+from datetime import date
 
 # Create your models here.
+
+TRIP_CHOICES = (
+    ('L', 'Luxury'),
+    ('F', 'Family'),
+    ('E', 'Expedition'),
+    ('F', 'Frugal')
+)
+
+TRANSPORATION_CHOICES = (
+    ('C', 'Car'),
+    ('A', 'Airplane'),
+    ('T', 'Train'),
+    ('B', 'Bike'),
+    ('S', 'Ship')
+)
+
+
+class Vacation(models.Model):
+    name = models.CharField(max_length=100)
+    destination = models.CharField(max_length=100)
+    description = models.TextField(max_length=250)
+    date = models.DateField('travel date')
+    duration = models.IntegerField()
+    typeoftrip = models.CharField(max_length=20, choices=TRIP_CHOICES)
+    travellers = models.IntegerField()
+    transportation = models.CharField(max_length=20, choices=TRANSPORATION_CHOICES, default='Airplane')
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'vacation_id': self.id})
+
+
