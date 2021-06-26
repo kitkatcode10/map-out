@@ -5,9 +5,15 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from .models import Vacation
+
 # Create your views here.
 def about(request):
     return render(request, 'about.html')
+
+def vacations_index(request):
+  vacations = Vacation.objects.all()
+  return render(request, 'vacations/index.html', {'vacations': vacations})
 
 # def about(request):
 #     return render(request, 'about.html')
