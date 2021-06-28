@@ -15,6 +15,8 @@ def vacations_index(request):
   vacations = Vacation.objects.all()
   return render(request, 'vacations/index.html', {'vacations': vacations})
 
+
+
 # def about(request):
 #     return render(request, 'about.html')
 def signup(request):
