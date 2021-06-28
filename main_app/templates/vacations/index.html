@@ -6,7 +6,7 @@
 
 {% for vacation in vacations %}
 
-<a href="{% url 'detail' vacation.id">
+<a href="/vacations/{{vacation.id}}">
 <div class="row">
     <div class="col s12 m6">
       <div class="card">

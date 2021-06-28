@@ -15,7 +15,9 @@ def vacations_index(request):
   vacations = Vacation.objects.all()
   return render(request, 'vacations/index.html', {'vacations': vacations})
 
-
+def vacations_detail(request, vacation_id):
+  vacation = Vacation.objects.get(id=vacation_id)
+  return render(request, 'vacations/detail.html', {'vacation': vacation})
 
 # def about(request):
 #     return render(request, 'about.html')
