@@ -18,3 +18,7 @@ footer.page-footer {
 .navbar-fixed nav {
   background-color: rgb(68, 224, 211);
 }
+
+#vacation-description {
+display: inline-block;
+}
