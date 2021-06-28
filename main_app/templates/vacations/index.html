@@ -19,6 +19,7 @@
           <p>{{vacation.destination}}</p>
           <p>{{vacation.description}}</p>
           <p>{{vacation.typeoftrip}}</p>
+          <a href="{% url 'vacations_delete' vacation.id %}">Delete</a>
         </div>
       </div>
     </div>
