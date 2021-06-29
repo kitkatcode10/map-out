@@ -37,4 +37,14 @@ class Vacation(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'vacation_id': self.id})
 
+class Itinerary(models.Model):
+  date = models.DateField('Itinerary date')
+  activity = models.TextField(max_length=250)
+  vacation = models.ForeignKey(Vacation, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"{self.activity} on {self.date}"
+
+  class Meta:
+    ordering = ['-date']
 

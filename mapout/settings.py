@@ -80,7 +80,8 @@ DATABASES = {
         'NAME': 'mapout',
         'HOST':'localhost',
         'USER': 'postgres',
-        'PASSWORD': 'secret',     }
+        'PASSWORD': 'secret',     
+    }
 }
 
 
