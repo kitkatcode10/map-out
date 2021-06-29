@@ -1,4 +1,8 @@
 from django.shortcuts import render,redirect
+
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+
 from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -14,6 +18,13 @@ def about(request):
 def vacations_index(request):
   vacations = Vacation.objects.all()
   return render(request, 'vacations/index.html', {'vacations': vacations})
+
+
+class VacationDelete(DeleteView):
+  model = Vacation
+  success_url= '/vacations/'
+
+
 
 # def about(request):
 #     return render(request, 'about.html')
