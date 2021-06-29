@@ -19,6 +19,14 @@ footer.page-footer {
   background-color: rgb(68, 224, 211);
 }
 
-#vacation-description {
-display: inline-block;
+/* Float four columns side by side */
+.column {
+  display: grid;
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+  color: white;
 }
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}

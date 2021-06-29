@@ -16,44 +16,36 @@
 
   <!-- Vacations Details Card -->
 
-  <section id="vacation-description">
-  <div class="row">
-    <div class="col m6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title"><h4> Vacation Details</h4> </span>
-          <p> <h5>Destination</h5> {{vacation.destination}}</p>
-           <p> <h5>Description</h5> {{vacation.description}}</p>
-           <p> <h5>Departure Date</h5> {{vacation.date}}</p>
-            <p> <h5>Duration</h5> {{vacation.duration}} days</p>
-           <p> <h5> Type of Trip </h5>{{vacation.typeoftrip}}</p> 
-          <p> <h5>Travellers</h5> {{vacation.travellers}}</p>
-          <p> <h5>Transportation</h5> {{vacation.transportation}}</p>
-        </div>
-        <div class="card-action">
-          <a href="#">Edit Vacation</a>
-        </div>
+
+<div class="row">
+  <div class="column">
+    <div class="card blue-grey darken-1">
+      <span class="card-title"><h4> Vacation Details</h4> </span>
+      <p> <h5>Destination</h5> {{vacation.destination}}</p>
+       <p> <h5>Description</h5> {{vacation.description}}</p>
+       <p> <h5>Departure Date</h5> {{vacation.date}}</p>
+        <p> <h5>Duration</h5> {{vacation.duration}} days</p>
+       <p> <h5> Type of Trip </h5>{{vacation.typeoftrip}}</p> 
+      <p> <h5>Travellers</h5> {{vacation.travellers}}</p>
+      <p> <h5>Transportation</h5> {{vacation.transportation}}</p>
+      <div class="card-action">
+        <a href="#">Edit Vacation</a>
       </div>
     </div>
   </div>
-</section>
-<!-- Packing List Card -->
 
-  <div class="row">
-    <div class="col m6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title"><h4> Packing List</h4> </span>
-          <p> Coming Soon</p>
-        </div>
-        <div class="card-action">
-          <a href="#">Edit Packing List</a>
-        </div>
-      </div>
+  <div class="column">
+    <div class="card blue-grey darken-1">
+      <span class="card-title"><h4> Packing List</h4> </span>
+      <p> Coming Soon</p>
+    <div class="card-action">
+      <a href="#">Edit Packing List</a>
     </div>
   </div>
-          
+    
+  </div>
 
+</div>
 
 
 {% endblock %}
