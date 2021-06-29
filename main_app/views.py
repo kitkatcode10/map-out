@@ -23,6 +23,10 @@ def vacations_index(request):
   return render(request, 'vacations/index.html', {'vacations': vacations})
 
 
+def vacations_detail(request, vacation_id):
+  vacation = Vacation.objects.get(id=vacation_id)
+  return render(request, 'vacations/detail.html', {'vacation': vacation})
+
 class VacationDelete(DeleteView):
   model = Vacation
   success_url= '/vacations/'

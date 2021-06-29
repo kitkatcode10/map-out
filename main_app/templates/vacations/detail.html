@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<H1>{{vacation.name}}</H1>
+
+<!-- Images  -->
+
+<div class="row">
+    <div class="col s6" ><img src="https://i.ibb.co/LJDw6B6/banff.jpg"></div>
+
+    <div class="col s3"><img src="https://i.ibb.co/LJDw6B6/banff.jpg">6-columns (one-quarter)</div>
+    <div class="col s3"><img src="https://i.ibb.co/LJDw6B6/banff.jpg">6-columns (one-quarter)</div>
+
+  </div>
+
+  <!-- Vacations Details Card -->
+
+
+<div class="row">
+  <div class="column">
+    <div class="card blue-grey darken-1">
+      <span class="card-title"><h4> Vacation Details</h4> </span>
+      <p> <h5>Destination</h5> {{vacation.destination}}</p>
+       <p> <h5>Description</h5> {{vacation.description}}</p>
+       <p> <h5>Departure Date</h5> {{vacation.date}}</p>
+        <p> <h5>Duration</h5> {{vacation.duration}} days</p>
+       <p> <h5> Type of Trip </h5>{{vacation.typeoftrip}}</p> 
+      <p> <h5>Travellers</h5> {{vacation.travellers}}</p>
+      <p> <h5>Transportation</h5> {{vacation.transportation}}</p>
+      <div class="card-action">
+        <a href="#">Edit Vacation</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card blue-grey darken-1">
+      <span class="card-title"><h4> Packing List</h4> </span>
+      <p> Coming Soon</p>
+    <div class="card-action">
+      <a href="#">Edit Packing List</a>
+    </div>
+  </div>
+    
+  </div>
+
+</div>
+
+
+{% endblock %}
