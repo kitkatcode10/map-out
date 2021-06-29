@@ -1,13 +1,15 @@
+
+from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render,redirect
-
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
-
 from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Vacation 
+
 
 from .models import Vacation
 
@@ -65,3 +67,17 @@ def signup(request):
 
 # class CatCreate(LoginRequiredMixin, CreateView):
 #   ...
+
+class VacationCreate(LoginRequiredMixin, CreateView): 
+  model = Vacation 
+  fields = '__all__'
+  
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form) 
+
+class VacationUpdate(LoginRequiredMixin, UpdateView):
+  model = Vacation 
+  fields = '__all__'
+
+  # fields = ['destination', 'description', 'date', 'duration', 'typeoftrip', 'travellers', 'transportation'] wanted to try the all, here if we need it -KW
