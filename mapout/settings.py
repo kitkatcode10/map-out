@@ -78,9 +78,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mapout',
-        'HOST':'localhost',
-        'USER': 'postgres',
-        'PASSWORD': 'secret',     }
+        # 'HOST':'localhost',
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'secret',     
+    }
 }
 
 

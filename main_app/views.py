@@ -12,6 +12,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Vacation
 
 # Create your views here.
+def home(request):
+    return redirect ('about')
+
 def about(request):
     return render(request, 'about.html')
 
