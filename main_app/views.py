@@ -47,9 +47,8 @@ def signup(request):
 
 class VacationCreate(LoginRequiredMixin, CreateView): 
   model = Vacation 
-  fields = ['destination ', 'description', 'date', 'duration', 'typeoftrip', 'travellers', 'transportation']
-  success_url = '/vacation/'
-
+  fields = '__all__'
+  
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form) 
@@ -58,4 +57,4 @@ class VacationUpdate(LoginRequiredMixin, UpdateView):
   model = Vacation 
   fields = '__all__'
 
-  # fields = ['destination ', 'description', 'date', 'duration', 'typeoftrip', 'travellers', 'transportation'] wanted to try the all, here if we need it -KW
+  # fields = ['destination', 'description', 'date', 'duration', 'typeoftrip', 'travellers', 'transportation'] wanted to try the all, here if we need it -KW
