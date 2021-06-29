@@ -1,4 +1,8 @@
 from django.shortcuts import render,redirect
+
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+
 from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -8,6 +12,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Vacation
 
 # Create your views here.
+def home(request):
+    return redirect ('about')
+
 def about(request):
     return render(request, 'about.html')
 
@@ -15,9 +22,16 @@ def vacations_index(request):
   vacations = Vacation.objects.all()
   return render(request, 'vacations/index.html', {'vacations': vacations})
 
+
 def vacations_detail(request, vacation_id):
   vacation = Vacation.objects.get(id=vacation_id)
   return render(request, 'vacations/detail.html', {'vacation': vacation})
+
+class VacationDelete(DeleteView):
+  model = Vacation
+  success_url= '/vacations/'
+
+
 
 # def about(request):
 #     return render(request, 'about.html')
