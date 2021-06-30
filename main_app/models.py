@@ -37,10 +37,10 @@ class Packing(models.Model):
   colour = models.CharField(max_length=20)
   
   class Meta:
-    ordering = ['-id']
+    ordering = ['category']
 
   def __str__(self):
-    return self.name
+    return self.item
   
   def get_absolute_url(self):
     return reverse('packing_index')
