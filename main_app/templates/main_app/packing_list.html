@@ -14,7 +14,7 @@
       <span class="title">{{packing.item}}</span>
       <p>{{packing.colour}} {{packing.brand}} 
       
-   <a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>
+   <a href="{% url 'packing_update' packing.id %}" class="secondary-content"><i class="material-icons">edit</i></a>
 
     </li> Add this item to a vacation
       <a href="#!" class="secondary-content"><i class="material-icons">add</i></a>

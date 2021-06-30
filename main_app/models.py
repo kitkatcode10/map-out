@@ -20,7 +20,18 @@ TRANSPORATION_CHOICES = (
     ('S', 'Ship')
 )
 
+CATEGORY_CHOICES = (
+  ('O', 'OTHER'),
+  ('B', 'BOTTOMS'),
+  ('T', 'TOPS'),
+  ('F', 'FOOTWEAR'),
+  ('A', 'ACCESSORIES'),
+  ('G', 'GEAR'),
+  
+)
+
 class Packing(models.Model):
+  category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default=CATEGORY_CHOICES[0][0] )
   item = models.CharField(max_length=50)
   brand = models.CharField(max_length=50)
   colour = models.CharField(max_length=20)
