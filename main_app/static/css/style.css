@@ -19,7 +19,7 @@ footer.page-footer {
   background-color: rgb(68, 224, 211);
 }
 
-/* Float four columns side by side */
+/* Float two columns side by side */
 .column {
   display: grid;
   float: left;
