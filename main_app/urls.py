@@ -13,5 +13,6 @@ urlpatterns = [
     path('packing/', views.PackingList.as_view(), name='packing_index'),
     path('packing/<int:pk>/', views.PackingDetail.as_view(), name='packing_detail'),
     path('packing/create/', views.PackingCreate.as_view(), name='packing_create'),
+    path('packing/<int:pk>/update/', views.PackingUpdate.as_view(), name='packing_update'),
 ]
 

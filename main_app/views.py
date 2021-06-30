@@ -97,3 +97,8 @@ class PackingDetail(DetailView):
 
 class PackingList(ListView):
   model = Packing
+
+
+class PackingUpdate(UpdateView):
+  model= Packing
+  fields = '__all__'
