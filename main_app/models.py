@@ -20,6 +20,16 @@ TRANSPORATION_CHOICES = (
     ('S', 'Ship')
 )
 
+class Packing(models.Model):
+  item = models.CharField(max_length=50)
+  brand = models.CharField(max_length=50)
+  colour = models.CharField(max_length=20)
+
+  def __str__(self):
+    return self.name
+  
+  def get_absolute_url(self):
+    return reverse('packing_detail', kwargs={'pk': self.id})
 
 class Vacation(models.Model):
     name = models.CharField(max_length=100)
@@ -30,7 +40,7 @@ class Vacation(models.Model):
     style = models.CharField(max_length=10, choices=STYLE_CHOICES, default=STYLE_CHOICES[0][0])
     travellers = models.IntegerField()
     transportation = models.CharField(max_length=10, choices=TRANSPORATION_CHOICES, default=TRANSPORATION_CHOICES[0][0])
-
+    packing = models.ManyToManyField(Packing)
 
     def __str__(self):
         return self.name
