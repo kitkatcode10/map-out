@@ -1,6 +1,5 @@
 
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
@@ -71,6 +70,7 @@ def signup(request):
 class VacationCreate(LoginRequiredMixin, CreateView): 
   model = Vacation 
   fields = '__all__'
+  success_url = '/vacations/'
   
   def form_valid(self, form):
     form.instance.user = self.request.user

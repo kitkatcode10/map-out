@@ -5,11 +5,11 @@ from datetime import date
 
 # Create your models here.
 
-TRIP_CHOICES = (
+STYLE_CHOICES = (
     ('L', 'Luxury'),
     ('F', 'Family'),
     ('E', 'Expedition'),
-    ('F', 'Frugal')
+    ('C', 'Cheap')
 )
 
 TRANSPORATION_CHOICES = (
@@ -27,9 +27,10 @@ class Vacation(models.Model):
     description = models.TextField(max_length=250)
     date = models.DateField('travel date')
     duration = models.IntegerField()
-    typeoftrip = models.CharField(max_length=20, choices=TRIP_CHOICES)
+    style = models.CharField(max_length=10, choices=STYLE_CHOICES, default=STYLE_CHOICES[0][0])
     travellers = models.IntegerField()
-    transportation = models.CharField(max_length=20, choices=TRANSPORATION_CHOICES, default='Airplane')
+    transportation = models.CharField(max_length=10, choices=TRANSPORATION_CHOICES, default=TRANSPORATION_CHOICES[0][0])
+
 
     def __str__(self):
         return self.name
