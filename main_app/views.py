@@ -7,7 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Vacation 
+from .models import Vacation, Packing 
 
 
 from .models import Vacation
@@ -81,3 +81,8 @@ class VacationUpdate(LoginRequiredMixin, UpdateView):
   fields = '__all__'
 
   # fields = ['destination', 'description', 'date', 'duration', 'typeoftrip', 'travellers', 'transportation'] wanted to try the all, here if we need it -KW
+
+
+class PackingCreate(CreateView):
+  model = Packing
+  fields = '__all__'
