@@ -24,12 +24,17 @@ class Packing(models.Model):
   item = models.CharField(max_length=50)
   brand = models.CharField(max_length=50)
   colour = models.CharField(max_length=20)
+  
+  class Meta:
+    ordering = ['-id']
 
   def __str__(self):
     return self.name
   
   def get_absolute_url(self):
-    return reverse('packing_detail', kwargs={'pk': self.id})
+    return reverse('packing_index')
+
+  
 
 class Vacation(models.Model):
     name = models.CharField(max_length=100)
