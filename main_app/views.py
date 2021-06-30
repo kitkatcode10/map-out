@@ -93,3 +93,7 @@ class PackingCreate(CreateView):
 
 class PackingDetail(DetailView):
   model = Packing
+
+
+class PackingList(ListView):
+  model = Packing
