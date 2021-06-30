@@ -27,7 +27,8 @@ def vacations_index(request):
 
 def vacations_detail(request, vacation_id):
   vacation = Vacation.objects.get(id=vacation_id)
-  return render(request, 'vacations/detail.html', {'vacation': vacation})
+  itinerary_form = ItineraryForm()
+  return render(request, 'vacations/detail.html', {'vacation': vacation, 'itinerary_form':itinerary_form})
 
 class VacationDelete(DeleteView):
   model = Vacation
