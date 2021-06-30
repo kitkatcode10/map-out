@@ -2,6 +2,9 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from django.views.generic import ListView, DetailView
+
 from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -86,3 +89,7 @@ class VacationUpdate(LoginRequiredMixin, UpdateView):
 class PackingCreate(CreateView):
   model = Packing
   fields = '__all__'
+
+
+class PackingDetail(DetailView):
+  model = Packing
