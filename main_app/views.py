@@ -7,7 +7,8 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Vacation 
+from .models import Vacation
+from .forms import ItineraryForm
 
 
 from .models import Vacation
@@ -26,11 +27,20 @@ def vacations_index(request):
 
 def vacations_detail(request, vacation_id):
   vacation = Vacation.objects.get(id=vacation_id)
-  return render(request, 'vacations/detail.html', {'vacation': vacation})
+  itinerary_form = ItineraryForm()
+  return render(request, 'vacations/detail.html', {'vacation': vacation, 'itinerary_form':itinerary_form})
 
 class VacationDelete(DeleteView):
   model = Vacation
   success_url= '/vacations/'
+
+def add_itinerary(request, vacation_id):
+  form = ItineraryForm(request.POST)
+  if form.is_valid():
+    new_itinerary = form.save(commit=False)
+    new_itinerary.vacation_id = vacation_id
+    new_itinerary.save()
+  return redirect('detail', vacation_id=vacation_id)
 
 
 
@@ -81,3 +91,4 @@ class VacationUpdate(LoginRequiredMixin, UpdateView):
   fields = '__all__'
 
   # fields = ['destination', 'description', 'date', 'duration', 'typeoftrip', 'travellers', 'transportation'] wanted to try the all, here if we need it -KW
+
