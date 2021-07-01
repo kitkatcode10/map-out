@@ -58,13 +58,14 @@
         <div class="card-action">
           <table class="striped">
             <thead>
-              <tr><th>Date</th><th>Activity</th></tr>
+              <tr><th>Date</th><th>Activity</th><th>Location</th></tr>
             </thead>
             <tbody>
               {% for itinerary in vacation.itinerary_set.all %}
                 <tr>
                   <td>{{itinerary.date}}</td>
                   <td>{{itinerary.activity}}</td>
+                  <td>{{itinerary.location}}</td>
                 </tr>
               {% endfor %}
             </tbody>
