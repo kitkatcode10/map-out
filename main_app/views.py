@@ -30,10 +30,6 @@ def vacations_detail(request, vacation_id):
   itinerary_form = ItineraryForm()
   return render(request, 'vacations/detail.html', {'vacation': vacation, 'itinerary_form': itinerary_form, 'packing': packing_vacation_doesnt_have})
 
-class VacationDelete(DeleteView):
-  model = Vacation
-  success_url= '/vacations/'
-
 def add_itinerary(request, vacation_id):
   form = ItineraryForm(request.POST)
   if form.is_valid():
@@ -96,7 +92,9 @@ class VacationUpdate(LoginRequiredMixin, UpdateView):
   model = Vacation 
   fields = '__all__'
 
-  # fields = ['destination', 'description', 'date', 'duration', 'typeoftrip', 'travellers', 'transportation'] wanted to try the all, here if we need it -KW
+class VacationDelete(DeleteView):
+  model = Vacation
+  success_url = '/vacations/'
 
 class PackingCreate(CreateView):
   model = Packing
