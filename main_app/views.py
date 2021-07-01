@@ -26,8 +26,9 @@ def vacations_index(request):
 
 def vacations_detail(request, vacation_id):
   vacation = Vacation.objects.get(id=vacation_id)
+  packing_vacation_doesnt_have = Packing.objects.exclude(id__in = vacation.packing.all().values_list('id'))
   itinerary_form = ItineraryForm()
-  return render(request, 'vacations/detail.html', {'vacation': vacation, 'itinerary_form':itinerary_form})
+  return render(request, 'vacations/detail.html', {'vacation': vacation, 'itinerary_form': itinerary_form, 'packing': packing_vacation_doesnt_have})
 
 class VacationDelete(DeleteView):
   model = Vacation
@@ -41,7 +42,13 @@ def add_itinerary(request, vacation_id):
     new_itinerary.save()
   return redirect('detail', vacation_id=vacation_id)
 
+def assoc_packing(request, vacation_id, packing_id):
+  Vacation.objects.get(id=vacation_id).packing.add(packing_id)
+  return redirect('detail, vacation_id=vacation_id')
 
+def unassoc_packing(request, vacation_id, packing_id):
+  Vacation.objects.get(id=vacation_id).packing.remove(packing_id)
+  return redirect('detail', vacation_id=vacation_id)
 
 # def about(request):
 #     return render(request, 'about.html')

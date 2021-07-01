@@ -43,10 +43,9 @@ class Packing(models.Model):
     return self.item
   
   def get_absolute_url(self):
-    return reverse('packing_index')
+    return reverse('packing_index', kwargs={'pk': self.id})
 
   
-
 class Vacation(models.Model):
     name = models.CharField(max_length=100)
     destination = models.CharField(max_length=100)
