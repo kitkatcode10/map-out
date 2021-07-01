@@ -73,11 +73,6 @@ def signup(request):
 # @login_required
 # def cats_index(request):
 
-# Implement Authorization on Class-based Views
-# Finally, we can protect class-based views like this:
-
-# class CatCreate(LoginRequiredMixin, CreateView):
-#   ...
 
 class VacationCreate(LoginRequiredMixin, CreateView): 
   model = Vacation 
