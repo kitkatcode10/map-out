@@ -20,15 +20,14 @@
     <input type="submit" value="Submit" class="btn">
   </form>
 
-<!-- JS to init the dropdowns -->
+    <!-- JS to init the dropdowns -->
 <script> 
 
   const selectEl = document.getElementById('id_style');
   M.FormSelect.init(selectEl);
 
-  const selectELEMENT = document.getElementById('id_transportation');
-  M.FormSelect.init(selectELEMENT); 
+  const transportationEl = document.getElementById('id_transportation');
+  M.FormSelect.init(transportationEl); 
 
 </script>
-
 {% endblock %}
