@@ -2,17 +2,16 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from django.views.generic import ListView, DetailView
+
 from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Vacation
+from .models import Vacation, Packing 
 from .forms import ItineraryForm
-
-
-from .models import Vacation
-
 # Create your views here.
 def home(request):
     return redirect ('about')
@@ -92,3 +91,19 @@ class VacationUpdate(LoginRequiredMixin, UpdateView):
 
   # fields = ['destination', 'description', 'date', 'duration', 'typeoftrip', 'travellers', 'transportation'] wanted to try the all, here if we need it -KW
 
+class PackingCreate(CreateView):
+  model = Packing
+  fields = '__all__'
+
+
+class PackingDetail(DetailView):
+  model = Packing
+
+
+class PackingList(ListView):
+  model = Packing
+
+
+class PackingUpdate(UpdateView):
+  model= Packing
+  fields = '__all__'

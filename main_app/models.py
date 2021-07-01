@@ -20,16 +20,32 @@ TRANSPORATION_CHOICES = (
     ('S', 'Ship')
 )
 
+CATEGORY_CHOICES = (
+  ('O', 'OTHER'),
+  ('B', 'BOTTOMS'),
+  ('T', 'TOPS'),
+  ('F', 'FOOTWEAR'),
+  ('A', 'ACCESSORIES'),
+  ('G', 'GEAR'),
+  
+)
+
 class Packing(models.Model):
+  category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default=CATEGORY_CHOICES[0][0] )
   item = models.CharField(max_length=50)
   brand = models.CharField(max_length=50)
   colour = models.CharField(max_length=20)
+  
+  class Meta:
+    ordering = ['category']
 
   def __str__(self):
-    return self.name
+    return self.item
   
   def get_absolute_url(self):
-    return reverse('packing_detail', kwargs={'pk': self.id})
+    return reverse('packing_index')
+
+  
 
 class Vacation(models.Model):
     name = models.CharField(max_length=100)

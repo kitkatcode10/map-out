@@ -6,20 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Map Out</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
   </head>
   <body>
-    <header class="navbar-fixed" >
+
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="{% url 'signup' %}">Sign Up</a></li>
+  <li><a href="{% url 'login' %}">Login</a></li>
+  <li class="divider"></li>
+  <li><a href="{% url 'logout' %}">Logout</a></li>
+</ul>
+<ul id="dropdown2" class="dropdown-content">
+  <li><a href="/vacations/create/">Add</a></li>
+  <li><a href="/vacations">My Vacations</a></li>
+</ul>
+<ul id="dropdown3" class="dropdown-content">
+  <li><a href="">Add</a></li>
+  <li><a href="">View</a></li>
+</ul>
+<ul id="dropdown4" class="dropdown-content">
+  <li><a href="/packing/create/">Add</a></li>
+  <li><a href="/packing/">View</a></li>
+</ul>
+<nav>
+  <div class="nav-wrapper light-green" >
+    <a href="/about" class="brand-logo">Map Out!</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a class="dropdown-trigger" href="/packing/create/" data-target="dropdown2">Vacation<i class="material-icons right">arrow_drop_down</i></a></li>
+
+      <li><a class="dropdown-trigger" href="/packing/create/" data-target="dropdown3">Itinerary<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a class="dropdown-trigger" href="/packing/create/" data-target="dropdown4">Packing<i class="material-icons right">arrow_drop_down</i></a></li>
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-trigger" href="/packing/create/" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+  </div>
+</nav>
+    
+    <!-- <header class="navbar-fixed" >
+ 
       <nav>
         <div class="nav-wrapper">
           <ul>
@@ -29,24 +59,34 @@
               >
             </li>
           </ul>
-          <ul class="right">
+           <ul class="right" >
+             
             <li><a href="/about">About</a></li>
             <!-- Added if statment for autorization -->
-            <li><a href="/vacations/create/">Add a Vacation</a></li>
+            <!-- <li><a href="/vacations/create/">Add a Vacation</a></li>
             <li><a href="/vacations">View All My Vacations</a></li>
+            <li><a href="/packing/create/">Add Packing Items</a></li>
+            <li><a href="/packing/">View Packing Items</a></li>
+
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             <!-- Add else statment for autorization -->
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <!-- <li><a href="{% url 'signup' %}">Sign Up</a></li>
             <li><a href="{% url 'login' %}">Log In</a></li>
           </ul>
         </div>
-      </nav>
+      </nav> --> 
     </header>
     <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer">
+    <footer class="page-footer brown">
       <div class="right">
         All Rights Reserved, &copy; 2021 Team Snakebyte &nbsp;
       </div>
     </footer>
   </body>
 </html>
+
+
+<script>
+const elemsDropdown = document.querySelectorAll(".dropdown-trigger");
+const instancesDropdown = M.Dropdown.init(elemsDropdown);
+</script>
