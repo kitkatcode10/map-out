@@ -53,9 +53,9 @@ class Vacation(models.Model):
     description = models.TextField(max_length=250)
     date = models.DateField('travel date')
     duration = models.IntegerField()
-    style = models.CharField(max_length=10, choices=STYLE_CHOICES, default=STYLE_CHOICES[0][0])
+    style = models.CharField(max_length=1, choices=STYLE_CHOICES, default=STYLE_CHOICES[0][0])
     travellers = models.IntegerField()
-    transportation = models.CharField(max_length=10, choices=TRANSPORATION_CHOICES, default=TRANSPORATION_CHOICES[0][0])
+    transportation = models.CharField(max_length=1, choices=TRANSPORATION_CHOICES, default=TRANSPORATION_CHOICES[0][0])
     packing = models.ManyToManyField(Packing)
 
     def __str__(self):
