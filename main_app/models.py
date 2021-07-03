@@ -21,12 +21,12 @@ TRANSPORATION_CHOICES = (
 )
 
 CATEGORY_CHOICES = (
-  ('O', 'OTHER'),
-  ('B', 'BOTTOMS'),
-  ('T', 'TOPS'),
-  ('F', 'FOOTWEAR'),
-  ('A', 'ACCESSORIES'),
-  ('G', 'GEAR'), 
+  ('O', 'Other'),
+  ('B', 'Bottoms'),
+  ('T', 'Tops'),
+  ('F', 'Footwear'),
+  ('A', 'Accessories'),
+  ('G', 'Gear'), 
 )
 
 class Packing(models.Model):
@@ -42,8 +42,9 @@ class Packing(models.Model):
     return self.item
   
   def get_absolute_url(self):
-    return reverse('packing_index')
+    return reverse('packing_index', kwargs={'pk': self.id})
 
+  
 class Vacation(models.Model):
     name = models.CharField(max_length=100)
     destination = models.CharField(max_length=100)

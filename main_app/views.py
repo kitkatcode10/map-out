@@ -1,6 +1,6 @@
 
 from django.shortcuts import render, redirect
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from django.views.generic import ListView, DetailView
@@ -32,12 +32,9 @@ def vacations_index(request):
 
 def vacations_detail(request, vacation_id):
   vacation = Vacation.objects.get(id=vacation_id)
+  packing_vacation_doesnt_have = Packing.objects.exclude(id__in = vacation.packing.all().values_list('id'))
   itinerary_form = ItineraryForm()
-  return render(request, 'vacations/detail.html', {'vacation': vacation, 'itinerary_form':itinerary_form})
-
-class VacationDelete(DeleteView):
-  model = Vacation
-  success_url= '/vacations/'
+  return render(request, 'vacations/detail.html', {'vacation': vacation, 'itinerary_form': itinerary_form, 'packing': packing_vacation_doesnt_have})
 
 def add_itinerary(request, vacation_id):
   form = ItineraryForm(request.POST)
@@ -47,7 +44,13 @@ def add_itinerary(request, vacation_id):
     new_itinerary.save()
   return redirect('detail', vacation_id=vacation_id)
 
+def assoc_packing(request, vacation_id, packing_id):
+  Vacation.objects.get(id=vacation_id).packing.add(packing_id)
+  return redirect('detail, vacation_id=vacation_id')
 
+def unassoc_packing(request, vacation_id, packing_id):
+  Vacation.objects.get(id=vacation_id).packing.remove(packing_id)
+  return redirect('detail', vacation_id=vacation_id)
 
 # def about(request):
 #     return render(request, 'about.html')
@@ -76,16 +79,11 @@ def signup(request):
 # @login_required
 # def cats_index(request):
 
-# Implement Authorization on Class-based Views
-# Finally, we can protect class-based views like this:
-
-# class CatCreate(LoginRequiredMixin, CreateView):
-#   ...
 
 class VacationCreate(LoginRequiredMixin, CreateView): 
   model = Vacation 
   fields = '__all__'
-  success_url = '/vacations/'
+  # success_url = '/vacations/'
   
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -95,7 +93,9 @@ class VacationUpdate(LoginRequiredMixin, UpdateView):
   model = Vacation 
   fields = '__all__'
 
-  # fields = ['destination', 'description', 'date', 'duration', 'typeoftrip', 'travellers', 'transportation'] wanted to try the all, here if we need it -KW
+class VacationDelete(DeleteView):
+  model = Vacation
+  success_url = '/vacations/'
 
 class PackingCreate(CreateView):
   model = Packing
