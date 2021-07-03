@@ -133,5 +133,5 @@ import django_heroku
 django_heroku.settings(locals())
 
 
-WSGI_APPLICATION = 'map-out.wsgi.application'
+WSGI_APPLICATION = 'mapoutvacationplanner.wsgi.application'
 # catcollector is the project name
