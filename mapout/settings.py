@@ -127,3 +127,11 @@ LOGOUT_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# heroku
+import django_heroku
+django_heroku.settings(locals())
+
+
+WSGI_APPLICATION = 'map-out.wsgi.application'
+# catcollector is the project name
