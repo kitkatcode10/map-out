@@ -21,13 +21,12 @@ TRANSPORATION_CHOICES = (
 )
 
 CATEGORY_CHOICES = (
-  ('O', 'OTHER'),
-  ('B', 'BOTTOMS'),
-  ('T', 'TOPS'),
-  ('F', 'FOOTWEAR'),
-  ('A', 'ACCESSORIES'),
-  ('G', 'GEAR'),
-  
+  ('O', 'Other'),
+  ('B', 'Bottoms'),
+  ('T', 'Tops'),
+  ('F', 'Footwear'),
+  ('A', 'Accessories'),
+  ('G', 'Gear'), 
 )
 
 class Packing(models.Model):
@@ -66,6 +65,7 @@ class Vacation(models.Model):
 class Itinerary(models.Model):
   date = models.DateField('Itinerary date')
   activity = models.TextField(max_length=250)
+  location = models.CharField(max_length=100)
   vacation = models.ForeignKey(Vacation, on_delete=models.CASCADE)
 
   def __str__(self):
@@ -73,4 +73,12 @@ class Itinerary(models.Model):
 
   class Meta:
     ordering = ['-date']
+
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    vacation = models.ForeignKey(Vacation, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for vacation_id: {self.vacation_id} @{self.url}"
 
