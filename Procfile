@@ -1,1 +1,1 @@
-web: gunicorn map-out.wsgi
+web: gunicorn map_out.wsgi
