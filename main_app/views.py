@@ -15,6 +15,10 @@ import boto3
 from .models import Vacation, Packing, Photo
 from .forms import ItineraryForm
 
+import os
+
+
+
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'vacaycollector'
 
@@ -115,6 +119,7 @@ class PackingUpdate(UpdateView):
 
 
 def add_photo(request, vacation_id):
+  my_key = os.environ['aws_secret_access_key']
 	# photo-file was the "name" attribute on the <input type="file">
   photo_file = request.FILES.get('photo-file', None)
   if photo_file:
