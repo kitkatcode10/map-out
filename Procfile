@@ -1,1 +1,1 @@
-web: gunicorn mapoutvacationplanner.wsgi
+web: gunicorn map-out.wsgi
