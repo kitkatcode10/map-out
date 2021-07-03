@@ -1,33 +1,37 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<!-- Leaving the action empty makes the form post to the same url used to display it -->
 
-{% block content %}
-  <!-- Leaving the action empty makes the form post to the same url used to display it -->
-  
-  {% if object %}
-    <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
-  {% else %}
-    <h1>Add Vacation</h1>
-  {% endif %}
+{% if object %}
+<h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+{% else %}
+<h1>Add Vacation</h1>
+{% endif %}
 
-  <form action="" method="post">
-    
-    <!-- Django requires the following for security purposes -->
-    {% csrf_token %}
-    <table>
-      <!-- Render the inputs inside of <tr>s & <td>s -->
-      {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit" class="btn">
-  </form>
+<form action="" method="post">
+  <!-- Django requires the following for security purposes -->
+  {% csrf_token %}
+  <table>
+    <!-- Render the inputs inside of <tr>s & <td>s -->
+    {{ form.as_table }}
+  </table>
+  <input type="submit" value="Submit" class="btn" />
+</form>
 
-    <!-- JS to init the dropdowns -->
-<script> 
-
-  const selectEl = document.getElementById('id_style');
+<!-- JS to init the dropdowns -->
+<script>
+  const selectEl = document.getElementById("id_style");
   M.FormSelect.init(selectEl);
 
-  const transportationEl = document.getElementById('id_transportation');
-  M.FormSelect.init(transportationEl); 
-
+  const transportationEl = document.getElementById("id_transportation");
+  M.FormSelect.init(transportationEl);
+</script>
+<script>
+  var dateEl = document.getElementById("id_date");
+  M.Datepicker.init(dateEl, {
+    format: "yyyy-mm-dd",
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true,
+  });
 </script>
 {% endblock %}
