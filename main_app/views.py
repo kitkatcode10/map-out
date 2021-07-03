@@ -46,7 +46,7 @@ def add_itinerary(request, vacation_id):
 
 def assoc_packing(request, vacation_id, packing_id):
   Vacation.objects.get(id=vacation_id).packing.add(packing_id)
-  return redirect('detail, vacation_id=vacation_id')
+  return redirect('detail', vacation_id=vacation_id)
 
 def unassoc_packing(request, vacation_id, packing_id):
   Vacation.objects.get(id=vacation_id).packing.remove(packing_id)
@@ -82,8 +82,7 @@ def signup(request):
 
 class VacationCreate(LoginRequiredMixin, CreateView): 
   model = Vacation 
-  fields = '__all__'
-  # success_url = '/vacations/'
+  fields = [ "name", "destination", "date", "duration", "style", "travellers", "transportation" ]
   
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -91,7 +90,7 @@ class VacationCreate(LoginRequiredMixin, CreateView):
 
 class VacationUpdate(LoginRequiredMixin, UpdateView):
   model = Vacation 
-  fields = '__all__'
+  fields = [ "name", "destination", "date", "duration", "style", "travellers", "transportation" ]
 
 class VacationDelete(DeleteView):
   model = Vacation
