@@ -1,18 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-<H1>{{vacation.name}}</H1>
-
 <!-- Images  -->
 
-<div class="row">
-    <div class="col s6" ><img src="https://i.ibb.co/LJDw6B6/banff.jpg"></div>
+{% for photo in vacation.photo_set.all %}
+  <img class="responsive-img card-panel" src="{{photo.url}}">
+{% empty %}
+  <div class="card-panel teal-text center-align">No Photos Yet</div>
+{% endfor %}
 
-    <div class="col s3"><img src="https://i.ibb.co/LJDw6B6/banff.jpg">6-columns (one-quarter)</div>
-    <div class="col s3"><img src="https://i.ibb.co/LJDw6B6/banff.jpg">6-columns (one-quarter)</div>
+<!-- Adding Photos Form  -->
 
-  </div>
+<form action="{% url 'add_photo' vacation.id %}" enctype="multipart/form-data" method="post" class="card-panel">
+  {% csrf_token %}
+  <input type="file" name="photo-file">
+  <br><br>
+  <input type="submit" class="btn" value="Upload Photo">
+
+</form>
+
+<H1>{{vacation.name}}</H1>
 
   <!-- Vacations Details Card -->
 
