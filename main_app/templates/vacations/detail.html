@@ -65,14 +65,14 @@
 
   <!-- Packing List -->
 
-<div class="column">
-  <div class="card blue-grey darken-1">
-    <span class="card-title"><h3>Packing List</h3></span>
+<div id="packing">
+  <div class="card blue-grey darken-1 col s3 center-align">
+    <span class="card-title white-text"><h3>Packing List</h3></span>
     {% if vacation.packing.count %}
     {% for packing in vacation.packing.all %}
     <div class="card">
       <div class="card-content teal-text">
-        <p>{{ packing.brand }} {{ packing.item }}</p>
+        <p>{{packing.colour}} {{ packing.brand }} {{ packing.item }}</p>
         </span>
       </div>
       <div class="card-action">
@@ -89,14 +89,16 @@
   </div>
 
 <!-- available items to pack here  -->
-  <div class="col s6">
-    <h3>Available Items</h3>
+
+
+<div class="column">
+  <div class="card blue-grey darken-1">
+    <span class="card-title"><h3>Available Items</h3></span>
     {% if packing.count %}
     {% for packing in packing.all %}
     <div class="card">
-      <div class="card-content">
-        <span class="card-title">
-          A <span style="colour: {{ packing.colour }}">{{ packing.brand }}</span> {{ packing.item }}  {{ packing.category }}
+      <div class="card-content teal-text">
+        <p>{{ packing.colour }} {{ packing.brand }} {{ packing.item }}</p>
         </span>
       </div>
       <div class="card-action">
@@ -108,11 +110,11 @@
     </div>
     {% endfor %}
     {% else %}
-    <h5>{{vacation.name}} Already Has All Items Available</h5>
+    <h5>Already Have All Items - Add More Here</h5>
     {% endif %}
-  </div>
- </div>
-</div>
+  </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<!-- Timeline -->
 
 <div class="outer-box">
   <div class="timeline-container">
