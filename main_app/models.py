@@ -26,8 +26,7 @@ CATEGORY_CHOICES = (
   ('T', 'TOPS'),
   ('F', 'FOOTWEAR'),
   ('A', 'ACCESSORIES'),
-  ('G', 'GEAR'),
-  
+  ('G', 'GEAR'), 
 )
 
 class Packing(models.Model):
@@ -44,8 +43,6 @@ class Packing(models.Model):
   
   def get_absolute_url(self):
     return reverse('packing_index')
-
-  
 
 class Vacation(models.Model):
     name = models.CharField(max_length=100)
@@ -67,6 +64,7 @@ class Vacation(models.Model):
 class Itinerary(models.Model):
   date = models.DateField('Itinerary date')
   activity = models.TextField(max_length=250)
+  location = models.CharField(max_length=100)
   vacation = models.ForeignKey(Vacation, on_delete=models.CASCADE)
 
   def __str__(self):
