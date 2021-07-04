@@ -80,7 +80,8 @@ DATABASES = {
         'NAME': 'mapout',
         'HOST':'localhost',
         'USER': 'postgres',
-        'PASSWORD': 'secret',     }
+        'PASSWORD': 'secret', 
+        }
 }
 
 
@@ -128,8 +129,15 @@ LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD
 # heroku
 
 django_heroku.settings(locals())
 
 
+=======
+
+import environ
+environ.Env()
+environ.Env.read_env()
+>>>>>>> c4535e0c146ff578000a2a54d947a4a01d9dec1b
