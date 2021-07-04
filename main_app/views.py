@@ -19,7 +19,7 @@ import os
 
 
 
-S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
+S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'vacaycollector'
 
 # Create your views here.
