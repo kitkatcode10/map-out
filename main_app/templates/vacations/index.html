@@ -9,12 +9,26 @@
   <div class="row" style="width: 500px; height: 600px">
     <div class="col s12 m6">
       <div class="card">
+
+        {% for photo in vacation.photo_set.all %}
+
+        {% if forloop.first %}
         <div class="card-image">
           <img
-            src="https://i.ibb.co/LJDw6B6/banff.jpg"
+            src="{{photo.url}}"
             alt="banff"
             border="0"
-          /><br />
+          />
+          {% endif %}
+          {% empty %}
+          <div class="card-image">
+            <img
+              src="https://scx2.b-cdn.net/gfx/news/2019/toomanyairpl.jpg"
+              alt="banff"
+              border="0"
+            />
+          {% endfor %}
+          <br />
           <span class="card-title">{{vacation.name}}</span>
           <a class="btn-floating halfway-fab waves-effect waves-light red"
             ><i class="material-icons"></i
