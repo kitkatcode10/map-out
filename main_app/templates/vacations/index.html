@@ -4,16 +4,16 @@
 
 {% for vacation in vacations %}
 
-
+<div class=column>
 <a href="{% url 'detail' vacation.id %}">
   <div class="row" style="width: 500px; height: 600px">
-    <div class="col s12 m6">
+    <div class="col s12 m10">
       <div class="card">
 
         {% for photo in vacation.photo_set.all %}
 
         {% if forloop.first %}
-        <div class="card-image">
+        <div class="card-image valign-wrapper" style="width: 396px; height: 300px">
           <img
             src="{{photo.url}}"
             alt="banff"
@@ -21,8 +21,8 @@
           />
           {% endif %}
           {% empty %}
-          <div class="card-image">
-            <img
+          <div class="card-image valign-wrapper" style="width: 396px; height: 300px">
+            <img 
               src="https://scx2.b-cdn.net/gfx/news/2019/toomanyairpl.jpg"
               alt="banff"
               border="0"
@@ -34,7 +34,7 @@
             ><i class="material-icons"></i
           ></a>
         </div>
-        <div class="card-content">
+        <div class="card-content black-text">
           <p>{{vacation.destination}}</p>
           <p>{{vacation.description}}</p>
           <p>{{vacation.style}}</p>
@@ -44,5 +44,5 @@
     </div>
   </div>
 </a>
-
+</div>
 {% endfor %} {% endblock %}
