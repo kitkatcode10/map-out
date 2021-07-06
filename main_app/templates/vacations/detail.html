@@ -124,7 +124,9 @@
     {% else %}
     <h5>Already Have All Items - Add More Here</h5>
     {% endif %}
-  </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <!-- Timeline -->
 
@@ -136,6 +138,7 @@
         <li>
           <div class="timeline-content">
             <h3 class="timeline-date">{{itinerary.date}}</h3>
+            <a class="waves-effect waves-light " href="{% url 'delete_itinerary' vacation.id itinerary.id %}">Delete</a>
             <h1>{{itinerary.activity}}</h1>
             <p>{{itinerary.location}}</p>
           </div>
