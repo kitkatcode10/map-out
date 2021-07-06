@@ -138,9 +138,9 @@
         <li>
           <div class="timeline-content">
             <h3 class="timeline-date">{{itinerary.date}}</h3>
-            <a class="waves-effect waves-light " href="{% url 'delete_itinerary' vacation.id itinerary.id %}">Delete</a>
             <h1>{{itinerary.activity}}</h1>
             <p>{{itinerary.location}}</p>
+            <a class="waves-effect waves-light btn-small " href="{% url 'delete_itinerary' vacation.id itinerary.id %}"><i class="material-icons">clear</i></a>
           </div>
         </li>
         {% endfor %}
