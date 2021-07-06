@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ov)39_tk)ua_1varc%+#vpg8ft(94@x=d^_vnp&!613k^314*3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mapoutyourvacation.herokuapp.com']
 
 
 # Application definition
@@ -135,5 +135,5 @@ import environ
 environ.Env()
 environ.Env.read_env()
 
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
