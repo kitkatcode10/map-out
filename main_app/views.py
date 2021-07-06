@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import boto3
-from .models import Vacation, Packing, Photo
+from .models import Itinerary, Vacation, Packing, Photo
 from .forms import ItineraryForm
 
 import os
@@ -47,6 +47,12 @@ def add_itinerary(request, vacation_id):
     new_itinerary.vacation_id = vacation_id
     new_itinerary.save()
   return redirect('detail', vacation_id=vacation_id)
+
+def delete_itinerary(request, vacation_id, itinerary_id):
+  i = Itinerary.objects.get(id=itinerary_id)
+  i.delete()
+  return redirect('detail', vacation_id=vacation_id)
+
 
 def assoc_packing(request, vacation_id, packing_id):
   Vacation.objects.get(id=vacation_id).packing.add(packing_id)
@@ -116,7 +122,6 @@ class PackingList(ListView):
 class PackingUpdate(UpdateView):
   model= Packing
   fields = '__all__'
-
 
 def add_photo(request, vacation_id):
   my_key = os.environ['aws_secret_access_key']

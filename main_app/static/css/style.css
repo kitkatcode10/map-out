@@ -91,6 +91,9 @@ footer.page-footer {
   margin-bottom: 10px;
   letter-spacing: 2px;
 }
+.timeline-content .btn-small {
+  border-radius: 25% !important;
+}
 @media only screen and (min-width: 768px) {
   .timeline:before {
     content: "";
