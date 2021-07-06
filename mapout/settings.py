@@ -129,6 +129,12 @@ LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+import environ
+environ.Env()
+environ.Env.read_env()
+
+
 # heroku
 
 django_heroku.settings(locals())
