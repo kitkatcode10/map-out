@@ -79,9 +79,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mapout',
-        # 'HOST':'localhost',
-        # 'USER': 'postgres',
-        # 'PASSWORD': 'secret', 
+        'HOST':'localhost',
+        'USER': 'postgres',
+        'PASSWORD': 'secret', 
         }
 }
 
@@ -135,5 +135,5 @@ import environ
 environ.Env()
 environ.Env.read_env()
 
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
