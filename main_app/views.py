@@ -19,6 +19,7 @@ import os
 
 
 
+
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'vacaycollector'
 
@@ -29,17 +30,19 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def vacations_index(request):
-  vacations = Vacation.objects.all()
+  vacations = Vacation.objects.filter(user=request.user)
   return render(request, 'vacations/index.html', {'vacations': vacations})
 
-
+@login_required
 def vacations_detail(request, vacation_id):
   vacation = Vacation.objects.get(id=vacation_id)
   packing_vacation_doesnt_have = Packing.objects.exclude(id__in = vacation.packing.all().values_list('id'))
   itinerary_form = ItineraryForm()
   return render(request, 'vacations/detail.html', {'vacation': vacation, 'itinerary_form': itinerary_form, 'packing': packing_vacation_doesnt_have})
 
+@login_required
 def add_itinerary(request, vacation_id):
   form = ItineraryForm(request.POST)
   if form.is_valid():
@@ -48,22 +51,22 @@ def add_itinerary(request, vacation_id):
     new_itinerary.save()
   return redirect('detail', vacation_id=vacation_id)
 
+@login_required
 def delete_itinerary(request, vacation_id, itinerary_id):
   i = Itinerary.objects.get(id=itinerary_id)
   i.delete()
   return redirect('detail', vacation_id=vacation_id)
 
-
+@login_required
 def assoc_packing(request, vacation_id, packing_id):
   Vacation.objects.get(id=vacation_id).packing.add(packing_id)
   return redirect('detail', vacation_id=vacation_id)
 
+@login_required
 def unassoc_packing(request, vacation_id, packing_id):
   Vacation.objects.get(id=vacation_id).packing.remove(packing_id)
   return redirect('detail', vacation_id=vacation_id)
 
-# def about(request):
-#     return render(request, 'about.html')
 def signup(request):
   error_message = ''
   if request.method == 'POST':
@@ -102,24 +105,24 @@ class VacationUpdate(LoginRequiredMixin, UpdateView):
   model = Vacation 
   fields = [ "name", "destination", "date", "duration", "style", "travellers", "transportation" ]
 
-class VacationDelete(DeleteView):
+class VacationDelete(LoginRequiredMixin, DeleteView):
   model = Vacation
   success_url = '/vacations/'
 
-class PackingCreate(CreateView):
+class PackingCreate(LoginRequiredMixin, CreateView):
   model = Packing
   fields = '__all__'
 
 
-class PackingDetail(DetailView):
+class PackingDetail(LoginRequiredMixin, DetailView):
   model = Packing
 
 
-class PackingList(ListView):
+class PackingList(LoginRequiredMixin, ListView):
   model = Packing
 
 
-class PackingUpdate(UpdateView):
+class PackingUpdate(LoginRequiredMixin, UpdateView):
   model= Packing
   fields = '__all__'
 

@@ -55,6 +55,7 @@ class Vacation(models.Model):
     travellers = models.IntegerField()
     transportation = models.CharField(max_length=1, choices=TRANSPORATION_CHOICES, default=TRANSPORATION_CHOICES[0][0])
     packing = models.ManyToManyField(Packing)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
