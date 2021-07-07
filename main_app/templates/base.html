@@ -30,10 +30,7 @@
     <a href="/about" class="brand-logo">Map Out!</a>
     <ul class="right hide-on-med-and-down">
       <li><a class="dropdown-trigger" href="/packing/create/" data-target="dropdown2">Vacation<i class="material-icons right">arrow_drop_down</i></a></li>
-
       <li><a class="dropdown-trigger" href="/packing/create/" data-target="dropdown4">Packing<i class="material-icons right">arrow_drop_down</i></a></li>
-      <!-- Dropdown Trigger -->
-      <!-- <li><a class="dropdown-trigger" href="/packing/create/" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li> -->
       <li><a href="{% url 'logout' %}">Logout</a></li>
     </ul>
     {% else %}
@@ -44,34 +41,7 @@
     {% endif %}
   </div>
 </nav>
-    
-    <!-- <header class="navbar-fixed" >
- 
-      <nav>
-        <div class="nav-wrapper">
-          <ul>
-            <li>
-              <a href="/about" class="left brand-logo"
-                >&nbsp;&nbsp;Map Out!</a
-              >
-            </li>
-          </ul>
-           <ul class="right" >
-             
-            <li><a href="/about">About</a></li>
-            <!-- Added if statment for autorization -->
-            <!-- <li><a href="/vacations/create/">Add a Vacation</a></li>
-            <li><a href="/vacations">View All My Vacations</a></li>
-            <li><a href="/packing/create/">Add Packing Items</a></li>
-            <li><a href="/packing/">View Packing Items</a></li>
 
-            <li><a href="{% url 'logout' %}">Log Out</a></li>
-            <!-- Add else statment for autorization -->
-            <!-- <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            <li><a href="{% url 'login' %}">Log In</a></li>
-          </ul>
-        </div>
-      </nav> --> 
     </header>
     <main class="container">{% block content %} {% endblock %}</main>
     <footer class="page-footer brown">
