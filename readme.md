@@ -13,7 +13,7 @@
 
 ## About
 
-Map Out is a full stack application made using Django.
+Map Out is a your vacation planner. It is a full stack application made using Django.
 
 Our Mission is to inspire people to explore and see the world. By using Map Out, you can map out where you want to go, what you want to do, and what you need to pack. So you're prepared and ready to make the most out of your travels!
 
@@ -51,11 +51,14 @@ Our Mission is to inspire people to explore and see the world. By using Map Out,
 
 - Django
 - Python 
-- AWS 
+- AWS S3
+- PostgresSQL
+- Heroku 
+
 
 ## Getting Started 
 
-Check out our website at: https://mapoutvacationplanner.herokuapp.com/
+You can get started here: https://mapoutvacationplanner.herokuapp.com/
 
 ## Next Steps 
 
